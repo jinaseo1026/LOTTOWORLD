@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- Font Awesome CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Stylish&display=swap" rel="stylesheet">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <title>Lottery</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <script
+    src="https://kit.fontawesome.com/9eb162ac0d.js"
+    crossorigin="anonymous"
+    ></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap');
+        </style>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!--로또 번호 생성-->
+    <script>
+          function generate() {
+            $.ajax({
+                  url: '/index_lottery',
+                  type: 'POST',
+                  success: function(response) {
+                    $('#result').text(response);
+                  }
+              });
+          }
+    </script>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="navbar">
+      <div class="navbar__logo">
+          <i class="fa fa-ticket"></i>
+          <a href="/">로또세상</a>
+      </div>
+      <ul class="navbar__menu">
+          <li class="navbar__menu__item active" onclick="window.location.href = '/login';">로그인</li>
+      </ul>
+
+      <!-- Toggle button -->
+      <button class="navbar__toggle-btn">
+          <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+
+    <!-- Home -->
+    <section id="home">
+      <img class="home__avator">
+      <h1 class="home__title" id="result">오늘의 로또번호</h1>
+      <h2 class="home__descrition">👇밑에 클릭!👇</h2>
+      <button class="submit" onclick="generate()">로또번호 받기</button>
+    </section>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
